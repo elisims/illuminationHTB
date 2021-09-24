@@ -35,17 +35,20 @@
 
 - I then input the command “ls -a” which shows both regular and hidden files in the current directory, and viola- a hidden folder named “.git” has now been uncovered.
 
+
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/4.PNG)
+
 ## Exploring the .git hidden folder
 - Realizing that there was a .git repo within this illumination.js folder made me start looking within the log files first and foremost. Using the “git log” command, the logs of the git repository are output to the terminal. 
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/4.PNG)
 ![img](https://github.com/elisims/illuminationHTB/raw/main/images/5.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/6.PNG)
 
 
 ## Researching each git log
 - Starting with the earliest available log from the list of log entries, I copied the bottom commit hash and used the command “git show {log-commit-hash}”.
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/6.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/7.PNG)
 
 - Looking through the output given by this command didn’t prove fruitful, as there was nothing suspicious given. The output of the command was as follows:
 
@@ -104,7 +107,7 @@ index 0000000..7eb834a
 
 - I then tried the next commit hash from the previous output of the git logs using the same command “git show {log-commit-hash #2}”.
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/7.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/8.PNG)
 
 - Looking through the output given by this command didn’t prove fruitful either, as there was nothing suspicious given. The output of the second command was as follows:
 
@@ -160,7 +163,7 @@ index 7eb834a..e582ba9 100644
 
 - This third log caught my eye initially when I first ran the “git log” command because the comment associated with it stated that the unique token was removed- Suggesting a static auth token would be somewhere within the code now (big security risk), however, I still wanted to go through all the previous logs just in case there could have been other vulnerabilities. Anyway, using the same command as before, we receive the following output:
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/8.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/9.PNG)
 
 ```python
 
@@ -192,11 +195,11 @@ index 316dc21..6735aa6 100644
 
 - Bingo, the red “token” looks very suspicious and will most likely lead to the flag after some decryption. I loaded up Firefox and went to the website “tunnelsup.com” which is my current favorite website to quickly identify which encryption algorithm has been used on a provided string.
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/9.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/10.PNG)
 
 - The website identified that no encryption was used but the character type is base64 which can be easily reversed with a simple command using the terminal.
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/10.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/11.PNG)
 
 - The output provided by the command 
 “echo 'SFRCe3YzcnNpMG5fYzBudHIwbF9hbV9JX3JpZ2h0P30=' | base64 --decode” is as follows:
@@ -213,7 +216,7 @@ HTB{v3rsi0n_c0ntr0l_am_I_right?}
 
 - The flag “HTB{****************}” had been discovered, so I input the flag into HTB to confirm it was correct, and indeed the challenge was over.
 
-![img](https://github.com/elisims/illuminationHTB/raw/main/images/11.PNG)
+![img](https://github.com/elisims/illuminationHTB/raw/main/images/12.PNG)
 
 ## Conclusion
 - This HTB challenge was another AMAZING confidence and morale booster for me- As I was able to utilize the basic knowledge of Git I had in order to figure out and solve the challenge. I don’t think it was quite as challenging as the main page for it suggested (I would have preferred a little more of a challenge), but practicing any skills is important for a beginner pentester like myself.
