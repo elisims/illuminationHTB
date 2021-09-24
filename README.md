@@ -208,7 +208,7 @@ index 316dc21..6735aa6 100644
 
 ┌──(kali㉿kali)-[~/Documents/Illumination.JS/.git]
 └─$ echo 'SFRCe3YzcnNpMG5fYzBudHIwbF9hbV9JX3JpZ2h0P30=' | base64 --decode
-HTB{v3rsi0n_c0ntr0l_am_I_right?}                                                                                           
+HTB{**************************}                                                                                           
 ┌──(kali㉿kali)-[~/Documents/Illumination.JS/.git]
 └─$ 
 
